@@ -1,0 +1,66 @@
+.table {
+    display:table;
+    position: absolute;
+	left: 20%;
+	width: 60%;
+}
+.row {
+    display:table-row;
+	vertical-align: middle;
+}
+.cell {
+/*     display:table-cell;	 */
+    padding:2px;
+}
+
+
+#contact-area {
+	position: relative;
+	margin-top: 5px;
+}
+
+#contact-area input, #contact-area textarea {
+	padding: 5px;
+	font-family: Helvetica, sans-serif;
+ 	font-size: 1.4em;  
+	margin: 0px 0px 10px 0px;
+	border: 2px solid #ccc; 
+	width: 90%;
+	display: block;
+	float: left;
+
+	-moz-border-radius:10px;  /* for Firefox */
+	-webkit-border-radius:10px; /* for Webkit-Browsers */
+	border-radius:10px; /* regular */
+	opacity:0.5; /* Transparent Background 50% */
+
+}
+
+#contact-area textarea {
+   height: .8em;
+   margin-bottom: 0em;
+   overflow: hidden;
+   width: 90%;
+}
+
+#contact-area textarea:focus, #contact-area input:focus {
+	border: 2px solid #900;
+}
+
+label {
+	text-align: right;
+	margin-right: 15px; 
+	padding-top: 5px;
+	font-size: 1.4em;
+	display: block;
+	float: left;
+}
+
+form {
+	left:30%;
+}
+
+
+div .fd {
+		display: block;
+}

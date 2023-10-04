@@ -1,0 +1,1284 @@
+/*
+
+This js file is created by:
+
+	ITConsulting24 AG
+	Oerlikonerstrasse 50
+	CH-8057 Zürich
+	SWITZERLAND
+
+	Phone: +41 44 382 88 88
+	info(at)itconsulting24.com
+	www.itconsulting24.com	
+ */
+
+body {
+	margin: 0;
+	font-family: Helvetica;
+	font-size: 16px;
+}
+	 
+h1{
+	width: 100%;
+}
+
+
+p{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+	color: white;
+}
+
+header {
+	background: linear-gradient(rgba(0, 0, 0, 0.8), transparent);
+	height: 25vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999999;
+}
+
+.marker-red{
+	color: #990000;
+	font-weight: bold;
+}
+
+.marker-white{
+	color: #992222;
+	font-weight: bold;
+	font-weight: bold;
+}
+
+.marker-black{
+	color: #1111;
+	font-weight: bold;
+	font-weight: bold;
+}
+
+.marker-black{
+	color: #000000;
+	font-weight: bold;
+}
+
+.marker-yellow{
+	color: #aaaa00;
+	font-weight:bold;
+}
+
+/* for logo */
+.logo{
+	position: fixed;
+	z-index:99;
+	top:1.5em;
+	left:2em;
+	border:0;
+/}
+/* for background type */
+.background-type-white{
+	background-color: #ffffff;
+}
+.background-type-black{
+	background-color: #000000;
+}
+.background-type-gray{
+	background-color: #ebebeb;
+}
+
+/* for slide */
+.slide-position{
+	position: relative;
+	
+}
+
+/* for textbox */
+.textbox-position{
+	position: absolute;
+	padding: 1.25em;
+	vertical-align: center;	
+}
+.textbox-transparent{
+	background: transparent;	
+}
+.textbox-gray-half-transparent{
+	background: rgba(246,243,243,0.5);	
+}
+.textbox-black-half-transparent{
+	background: rgba(0,0,0,0.5);	
+}
+.textbox-white-half-transparent{
+	background: rgba(255,255,255,0.5);	
+}
+
+.textbox-xl{
+	width: 45em;	
+}
+.textbox-lg{
+	width: 30em;	
+}
+.textbox-medium{
+	width: 23em;	
+}
+.textbox-sm{
+	width: 17em;		
+}
+
+.textbox-lg-vm-slide{
+	width: 30em;	
+}
+.textbox-medium-vm-slide{
+	width: 23em;	
+}
+.textbox-sm-vm-slide{
+	width: 17em;		
+}
+
+.textbox-top-left{
+	top: 10%; 
+	left: 6%;
+}
+.textbox-top-mid{
+	top: 10%; 
+	left: 30%;
+}
+.textbox-top-right{
+	top: 10%; 
+	right: 6%;
+}
+
+.textbox-mid-left{
+	top: 25%; 
+	left: 6%;
+}
+.textbox-mid-mid{
+	top: 25%; 
+	left: 30%;
+}
+.textbox-mid-right{
+	top: 25%; 
+	right: 6%;
+}
+
+.textbox-bottom-left{
+	bottom: 10%; 
+	left: 6%;
+}
+.textbox-bottom-mid{
+	bottom: 10%; 
+	left: 30%;
+}
+.textbox-bottom-right{
+	bottom: 10%; 
+	right: 6%;
+}
+.textbox-hide-on-mobile{
+	visibility: visible;	
+}
+.textbox-show-on-mobile{
+	visibility: hidden;	
+}
+
+/* for default text */
+.default-text-white{
+	color: #ffffff;
+}
+.default-text-black{
+	color: #000000;
+}
+.default-text-lg{
+	font-size: 2.5em;
+}
+.default-text-medium-lg{
+	font-size: 2em;
+}
+.default-text-medium{
+	font-size: 1.5em;
+}
+.default-text-sm{
+	font-size: 1.2em;
+}
+.default-text-left{
+	text-align: left;
+}
+.default-text-right{
+	text-align: right;
+}
+.default-text-center{
+	text-align: center;
+}
+.default-text-justify{
+	text-align: justify; 
+	text-justify: auto;
+}
+
+
+/* Overwrites some classes from jquery.fullPage.css 
+   for vertical and horizontal navigation */
+   /* Section navigation, control arrow */
+.section-controlArrow {
+    position: absolute;
+    z-index: 100;
+    left: 50%;
+    cursor: pointer;
+    margin-left: -2.375em;
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+
+
+/* Overwrites some classes from jquery.fullPage.css 
+   for vertical and horizontal navigation */
+   /* Section navigation, control arrow */
+.languages {
+    position: absolute;
+    z-index: 100;
+	top: 1.5em;    
+    right: 1.25em;    
+    margin-left: -2.375em;
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.language {
+    padding: .2em;
+	transition: opacity 0.2s ease-in;
+    width: auto;
+    opacity: 1;
+    top: 0em;	
+    text-shadow: 0 1px 0 black;
+    font-size: 1.25em;
+	color: #333;
+}
+
+.language-active{  
+	color: rgba(255, 255, 255, 0.8);
+}
+
+/* section navigation, up control arrow */
+.section-controlArrow.fp-up {
+    top: -1em;    
+}
+/* use font awesome angle-up arrow */
+.section-controlArrow.fp-up:before {
+    font-family: FontAwesome;
+	font-size: 5em;
+	color: #898987;
+	/* content: "\f106"; */
+	content: "\f0d8";
+	display: inline-block;
+	padding-bottom: 0.187em;
+	vertical-align: middle;    
+}
+/* section navigation, bottom control arrow */
+.section-controlArrow.fp-down {
+    bottom: -1em;    
+}
+/* use font awesome angle-down arrow */
+.section-controlArrow.fp-down:before {
+    font-family: FontAwesome;
+	font-size: 5em;
+	color: #898987;
+	/* content: "\f107"; */
+	content: "\f0d7";
+	display: inline-block;
+	padding-bottom: 0.187em;
+	vertical-align: middle;    
+}
+
+/*  for horizontal menu, left control array
+    here we changed the border-width property */
+.fp-controlArrow.fp-prev {
+    left: 0.1em;    
+}
+/* use font awesome angle-left arrow */
+.fp-controlArrow.fp-prev:before {
+    font-family: FontAwesome;
+	font-size: 4em;
+	color: #898987;
+/* 	content: "\f104"; */
+	content: "\f0d9";
+	display: inline-block;
+	padding-left: 0.187em;
+	vertical-align: middle;    
+}
+/*  for horizontal menu, right control array
+    here we changed the border-width property */
+.fp-controlArrow.fp-next {
+    right: 0.5em;    
+}
+/* use font awesome angle-right arrow */
+.fp-controlArrow.fp-next:before {
+    font-family: FontAwesome;
+	font-size: 4em;
+	color: #898987;
+	/* content: "\f105"; */
+	/* content: "\f138"; */
+	content: "\f0da";
+	display: inline-block;
+	padding-right: 0.187em;
+	vertical-align: middle;    
+}
+/* this is for vertical navigation
+   here, we changed the top property */
+#fp-nav {
+    position: fixed;
+    z-index: 100;
+    top: 7em;
+    opacity: 1;
+    -webkit-transform: translate3d(0,0,0);
+	z-index: 9999999;
+}
+/* for horizontal navigation
+   here, we added right and text-align property */
+.fp-slidesNav{
+    position: absolute;
+    z-index: 4;
+	right: 2%;
+	opacity: 1;
+	text-align: right;
+	margin-left: -42.5em; 
+}
+
+/* bottom position for horizontal navigation */
+.fp-slidesNav.bottom {
+    bottom: 0.5em;
+}
+
+/* for active navigation item and if we enter mouse in the navigation item 
+   here, we changed all the properties, height, width, margin, border-radious and background*/
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li a.active span,
+#fp-nav ul li:hover a.active span,
+.fp-slidesNav ul li:hover a.active span{
+    height: 0.75em;
+    width: 0.75em;
+    margin: -0.125em 0em 0em -0.125em; 
+    border-radius: 0%; 
+	background: #838b83;	
+	text-shadow: 0 1px 0 black;
+ }
+ 
+ /* when we hover on the horizontal and vertical menu list-item
+    item, keep the same hight, width and margin */
+ #fp-nav ul li:hover a span,
+.fp-slidesNav ul li:hover a span{
+    width: 0.75em;
+    height: 0.75em;
+    margin: -0.125em 0em 0em -0.125em;
+}
+
+/* this is used to show the labels of vertical navigation item
+   here, we changed the font color and font family  */
+#fp-nav ul li .fp-tooltip {
+    position: absolute;
+    top: 0em;
+    color: rgba(131, 139, 131, 0.56);
+	text-shadow: 0 1px 0 black;
+    font-size: 0.875em;
+    font-family: helvetica;
+    white-space: nowrap;
+    max-width: 13.75em;
+    overflow: hidden;
+    display: block;
+    opacity: 0;
+    width: 0;
+}
+ /* this is used to show the navigation items with white background
+    here we changed the border-radius, height, width, background and margin property */
+ 
+ #fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+    border-radius: 0%;
+    position: absolute;
+    z-index: 1;
+    height: 0.75em;
+    width: 0.75em;
+    border: 0;
+    rgba(131, 139, 131, 0.56);
+    left: 50%;
+    top: 50%;
+    margin: -0.125em 0em 0em -0.125em;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+/* this is used to show the navigation item labels
+ onmouseover on the vertical menu */
+#fp-nav ul:hover .fp-tooltip
+{
+    width: auto;
+    opacity: 1;	
+}
+
+#fp-nav ul {
+	margin-top: 0;
+}
+
+/* Hotspots */
+/* absolute position for the hotspot 
+   with some transition value for different browsers*/
+.spot {
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  z-index: 99;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: .7s ease .8s;
+  -moz-transition: .7s ease .8s;
+  -ms-transition: .7s ease .8s;
+  transition: .7s ease .8s; 
+  }
+
+/* sets the absolute position for the toggle image (cross sign)
+    but initially it is not visible */
+.spot .fig {
+  position: absolute;
+  right: -13em;
+  bottom: -1em;
+  visibility: hidden; 
+  }
+
+ /* toggle is visible if it is inside the css class  '.spot.open'*/
+.spot.open .fig {
+  visibility: visible; 
+  }
+
+ /* css properties for figure tag in the 'spot' class 
+    here the transform scaling is 0.8
+	and transparent (opacity: 0)*/
+.spot figure {
+  position: absolute;
+  right: 0.7em;
+  top: 0.2em;
+  z-index: 20;
+  border: 0.187em solid #fff;
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  -moz-transition: 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  -ms-transition: 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  transition: 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  opacity: 0; 
+  }
+  
+/* css properties for figure tag in the 'spot open' class 
+    here the transform scaling is 1
+	and not transparent (opacity: 1)*/
+.spot.open figure {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  opacity: 1; 
+  }
+  
+  /* figurecaption properties inside the 'spot ceiling' class  */
+.spot.only-image figure {
+  position: relative;
+  left: -60%;  
+  border-radius: 0%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  opacity: 1; 
+  }
+  
+ /* for image inside the 'spot' class 'figure' tag */
+.spot figure img {
+  margin-top: -1.8em;
+  margin-left: -1.8em; }
+
+ /* for figurecaption inside the 'spot' class  */
+.spot figcaption {
+  background: rgba(42, 38, 37, 0.8);
+  padding: 1.5em 4.6em 6.25em 1.5em;
+  width: 11em;
+  margin-right: 12.3em;
+  position: relative;
+  line-height: 1.8em;
+  color: #ffffff;
+  font-family: helvetica;
+  -webkit-transition: 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  -moz-transition: 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  -ms-transition: 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  transition: 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  -webkit-transform: translateY(1.625em);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  opacity: 0; 
+  }
+
+ /* figurecaption properties inside the 'spot ceiling' class  */
+.spot.text-and-image figcaption {
+  padding: 1.5em 4.6em 3.1em 1.5em;
+  width: 12em; 
+  }
+  
+  /* figurecaption properties inside the 'only-text' class  */
+.spot.only-text figcaption {
+  padding: 1.56em 2.5em 3.1em 1.56em;
+  max-width: 14.25em; 
+  width: 14.25em;
+  }
+
+ /* figurecaption transition properties inside the 'spot open' class  */
+.spot.open figcaption {
+  -webkit-transition: 0.75s cubic-bezier(0.2, 0, 0.2, 1);
+  -moz-transition: 0.75s cubic-bezier(0.2, 0, 0.2, 1);
+  -ms-transition: 0.75s cubic-bezier(0.2, 0, 0.2, 1);
+  transition: 0.75s cubic-bezier(0.2, 0, 0.2, 1);
+  -webkit-transform: translateY(0em);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  opacity: 1; 
+  }
+
+/* toggle css class inside the 'spot' class
+   it has a background image
+   and 30% transparent with the background  */
+.spot .toggle {
+  position: relative;
+  display: block;
+  z-index: 21;
+  cursor: pointer;
+  width: 2.5em;
+  height: 2.5em;
+  background: url(../imgs/shw/toggle.png) no-repeat center center;
+  opacity: .7;
+  background-size: 2.1em;
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -ms-transition: .5s ease;
+  transition: .5s ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -webkit-backface-visibility: hidden; 
+  }
+
+  /* on mouse over, the toggle is not transparent  */
+.spot .toggle:hover {
+  opacity: 1; 
+}
+
+/* If the toggle is inside the 'spot open' css class
+   then rotate it with 135 degree */
+.spot.open .toggle {
+  opacity: 1;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg); 
+}
+
+/* Hotspot positions, 
+   Caution: for positioning, we only use left and bottom property
+   */
+.spot-top-left{
+left: 20%;
+bottom:60%;
+}
+
+.spot-top-mid{
+left: 57%;
+bottom:60%;
+}
+
+.spot-top-right{
+left: 63%;
+bottom:60%;
+}
+
+.spot-mid-left{
+left: 20%;
+bottom:45%;
+}
+
+.spot-mid-mid{
+left: 57%;
+bottom:45%;
+}
+
+.spot-mid-right{
+left: 63%;
+bottom:45%;
+}
+
+.spot-bottom-left{
+left: 20%;
+bottom:20%;
+}
+
+.spot-bottom-mid{
+left: 57%;
+bottom:20%;
+}
+
+.spot-bottom-right{
+left: 63%;
+bottom:20%;
+}
+/* mixed slide css classes starts here */
+.mixed-slide-height{
+height: 100%;
+}
+
+.mixed-slide-right{
+position: absolute; 
+width: 50%; 
+float:left;
+left: 50%;
+top: 0%; 
+}
+
+.mixed-slide-part-container{
+	position: absolute; 
+	top: 0em; left: 0em; 
+	width: 100%; 
+	height: 100%;
+}
+
+.mixed-slide-right article{
+	position: absolute;
+	left: 0%;
+	top: 3%;
+	width: 85%;
+	max-height: 100%;
+	overflow: hidden;
+	padding: 1em 1em 1em 1em;	
+}
+.mixed-slide-right  footer{
+	position: absolute;
+	bottom: 5%;
+	left: 0%;
+	width: 85%;
+	text-align: center;
+	padding: 1em 1em 1em 1em;	
+}
+.mixed-slide-right article > section{
+	padding-bottom: 0.5em;
+}
+.mixed-slide-right footer > a{
+	color: #000;
+	text-decoration: none;
+}
+.mixed-slide-right footer > a:hover{
+	/* color: #fff; */
+	text-decoration: none;
+}
+
+.mixed-slide-right video{
+	position: absolute;
+	right: 0%;
+	bottom: 0%;
+	top:0%;
+	left:0%;	   	
+   	z-index:111;
+}
+
+/* left */
+.mixed-slide-left{
+	position: relative; 
+	width: 50%; 
+	height: 100%;
+}
+.mixed-slide-left article{
+	position: absolute;
+	left: 0%;
+	top: 10%;
+	width: 90%;
+	max-height: 100%;
+	overflow: hidden;
+	padding: 1em;	
+}
+.mixed-slide-left  footer{
+	position: absolute;
+	bottom: 0%;
+	left: 0%;
+	width: 85%;
+	text-align: center;
+	padding: 1em 1em 3em 1em;
+}
+.mixed-slide-left article > section{
+	padding-top: 1em;
+}
+.mixed-slide-left footer > a{
+	color: #000000;
+	text-decoration: none;
+}
+.mixed-slide-left footer > a:hover{
+	/* color: #ffffff; */
+	text-decoration: none;
+}
+.mixed-slide-absolute-position{
+	position: absolute;
+	padding: 1.25em;
+	vertical-align: center;	
+}
+.mixed-slide-transparent{
+	background: transparent;	
+}
+.mixed-slide-gray-half-transparent{
+	background: rgba(246,243,243,0.5);	
+}
+.mixed-slide-black-half-transparent{
+	background: rgba(0,0,0,0.5);	
+}
+.mixed-slide-white-half-transparent{
+	background: rgba(255,255,255,0.5);	
+}
+
+.mixed-slide-lg{
+	width: 30em;	
+}
+.mixed-slide-medium{
+	width: 23em;	
+}
+.mixed-slide-sm{
+	width: 17em;		
+}
+
+.mixed-top-left{
+left: 10%;
+top:10%;
+}
+
+.mixed-top-mid{
+left: 30%;
+top:10%;
+}
+
+.mixed-top-right{
+left: 50%;
+top:10%;
+}
+
+.mixed-mid-left{
+left: 10%;
+bottom:45%;
+}
+
+.mixed-mid-mid{
+left: 30%;
+bottom:45%;
+}
+
+.mixed-mid-right{
+left: 50%;
+bottom:45%;
+}
+
+.mixed-bottom-left{
+left: 10%;
+bottom:20%;
+}
+
+.mixed-bottom-mid{
+left: 30%;
+bottom:20%;
+}
+
+.mixed-bottom-right{
+left: 50%;
+bottom:20%;
+}
+
+.mixed-text-lg{
+	font-size: 2.5em;
+}
+.mixed-text-medium-lg{
+	font-size: 2em;
+}
+.mixed-text-medium{
+	font-size: 1.5em;
+}
+.mixed-text-sm{
+	font-size: 1.2em;
+}
+
+/* Video section */
+
+video{
+	width: 100%;
+	height: 100%; 
+	background-size: 100% 100%;
+ 	background-color: black; /* in case the video doesn't fit the whole page*/
+  	background-image: /* our video */;
+  	background-position: center center;
+  	background-size: contain;
+}
+
+.section video{
+	position: absolute;
+	right: 0%;
+	bottom: 0%;
+	top:0%;
+	left:0%;	   	
+   	z-index:111;
+}
+
+.video-objectfit-cover{
+object-fit: cover; /*cover video background */
+}
+.video-objectfit-contain{
+object-fit: contain; /*contain video background */
+}
+.video-objectfit-fill{
+object-fit: fill; /*fill video background */
+}
+.video-objectfit-none{
+object-fit: none; /*none video background */
+}
+.video-objectfit-scaledown{
+object-fit: scale-down; /*scale down video background */
+}
+
+/* Button style */
+.btn {
+  display: inline-block;
+  padding: 0.375em 0.75em;
+  margin-bottom: 0;
+  font-size: 0.875em;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 0.2em solid transparent;   
+  min-width: 120px;
+}
+
+.btn-default {
+  color: #000;
+  background-color: #fff;  
+  z-index: 10000;	
+}
+
+.btn-default:hover {
+  background-color: #ccc;  
+}
+
+
+/* Border Layout */
+
+.border-layout-container {
+	position: absolute; 
+	top: 10%; 
+	left: 5%; 
+	width: 90%; 
+	height: 60%;
+}
+.border-layout-half-gray-transparent {
+	background: rgba(246,243,243,0.5);
+}
+.border-layout-half-dimgray-transparent {
+	background: rgba(105,105,105,0.5);
+}
+.border-layout-half-white-transparent {
+	background: rgba(255,255,255,0.5);
+}
+.border-layout-half-blue-transparent {
+	background: rgba(100,149,237,0.5);
+}
+.border-layout-half-black-transparent {
+	background: rgba(0,0,0,0.5);
+}
+.border-layout-header    { 
+	margin:0;  
+	padding:1em; 
+}        
+.border-layout-footer    { 
+	margin:0;  
+	padding:1em; 
+}        
+.border-layout-left-content     { 
+	margin:0;  
+	padding:1em;  
+	width:15%; 
+	height:80%; 
+	float:left; 
+	margin-right:1.1em;
+}        
+.border-layout-right-content     { 
+	margin:0;  
+	padding:1em;  
+	width:15%; 
+	height:80%; 
+	float:right; 
+	margin-left:1.1em; 
+}        
+.border-layout-mid-content   { 
+	margin:0;  
+	padding:1em;  
+	padding-bottom:0em; 
+	min-height: 79%; 
+}        
+.border-layout-mid-content:after    { 
+	content:' '; 
+	clear:both; 
+	display:block; 
+	height:0; 
+	overflow:hidden 
+} 
+
+.border-layout-text-left{
+	text-align: left;
+}
+.border-layout-text-right{
+	text-align: right;
+}
+.border-layout-text-center{
+	text-align: center;
+}
+.border-layout-text-justify{
+	text-align: justify; 
+	text-justify: auto;
+}
+
+/* Instagram */
+	#instafeed a {
+		  padding:0.312em 0.312em 0.063em 0.312em;
+		  margin:0.625em;
+		  border:0.063em solid #e1e1e1;
+		  display:inline-block;
+		  border-radius: 0.25em;
+		  position:relative;
+		}
+		
+		#instafeed a > img {
+		  width: 9.375em;
+		  height: 9.375em;
+		}
+
+		#instafeed .likes {
+		  background:rgba(222,89,135,0.8);
+		  font-family:sans-serif;
+		  font-size:1em;
+		  position:absolute;
+		  color:#ffffff;
+		  right:0.312em;
+		  top:0.312em;
+		  left:0.312em;
+		  opacity:0;
+		  text-align:center;
+		  line-height:9.375em;
+		  text-shadow:0 0.063em rgba(0,0,0,0.5);
+		  -webkit-font-smoothing:antialiased;
+		  -webkit-transition: opacity 100ms ease;
+			-moz-transition: opacity 100ms ease;
+			-o-transition: opacity 100ms ease;
+			-ms-transition: opacity 100ms ease;
+			transition: opacity 100ms ease;
+		}
+
+		#instafeed a:hover .likes {
+		  opacity:1;
+		}
+		.instagram-container-position{
+			bottom: 15%; 
+			left: 10%; 
+		}
+		.instagram-container-lg{
+			width: 50em; 
+		}
+		.instagram-container-medium{
+			width: 40em; 
+		}
+		.instagram-container-sm{
+			width: 30em; 
+		}
+		.instagram-container{
+			position: absolute;				
+			text-align: left; 
+			/* background-color: #f8f8ff;  */
+			max-height: 20em;
+			min-height: 14em;
+			/* overflow: auto; */
+		}
+		.instagram-container-half-gray-transparent{
+			background: rgba(246,243,243,0.5);
+		}
+		.instagram-container-half-white-transparent{
+			background: rgba(255,255,255,0.5);
+		}
+		.instagram-container-half-black-transparent{
+			background: rgba(0,0,0,0.5);
+		}
+		.instagram-header-msg{
+			margin-left:0.5em; 
+			font-size: 1.5em;
+		}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {    
+	body{font-size: 10px;}
+	
+	/* textbox */
+	
+	.textbox-xl{
+		width: 24em;	
+	}
+
+	.textbox-lg{
+		width: 20em;	
+	}
+	.textbox-medium{
+		width: 17em;	
+	}
+	.textbox-sm{
+		width: 14em;		
+	}
+	.textbox-top-mid{
+		top: 10%; 
+		left: 20%;
+	}
+	.textbox-mid-mid{
+		top: 25%; 
+		left: 20%;
+	}
+	.textbox-bottom-mid{
+		bottom: 10%; 
+		left: 20%;
+	}
+	.textbox-hide-on-mobile{
+		visibility: hidden;
+	}
+	.textbox-show-on-mobile{
+		visibility: visible;	
+	}
+	.textbox-lg-vm-slide{
+		width: 14em;	
+	}
+	.textbox-medium-vm-slide{
+		width: 12em;	
+	}
+	.textbox-sm-vm-slide{
+		width: 10em;		
+	}
+	
+	/* Navigation */
+	#fp-nav.right {
+		right: 0.875em;
+	}
+	#fp-nav.left {
+		left: 0.875em;
+	}
+	.fp-slidesNav.bottom {
+		bottom: .875em;
+	}
+	.fp-slidesNav.top {
+		top: .875em;
+	}	
+	.fp-slidesNav{
+		margin-left: -16em; 
+	}
+	
+	#fp-nav ul li .fp-tooltip {
+    top: -0.125em;
+    color: #838b83;
+	text-shadow: 0 1px 0 black;
+    font-size: 1.25em;    
+	}
+	/* hotspot */
+	.spot-top-left{
+	left: 50%;
+	bottom:60%;
+	}
+	.spot-mid-left{
+	left: 50%;
+	bottom:45%;
+	}
+	.spot-bottom-left{
+	left: 50%;
+	bottom:20%;
+	}
+	.spot.only-image figure {
+	  position: relative;
+	  left: -45%;  
+	  border-radius: 0%;
+	  -webkit-transform: scale(1);
+	  transform: scale(1);
+	  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	  opacity: 1; 
+	  }
+	  
+	/* Mixed slide */
+	.mixed-slide-lg{
+		width: 20em;	
+	}
+	.mixed-slide-medium{
+		width: 17em;	
+	}
+	.mixed-slide-sm{
+		width: 14em;		
+	}
+	.mixed-top-left{
+	left: 10%;
+	top:10%;
+	}
+
+	.mixed-top-mid{
+	left: 10%;
+	top:10%;
+	}
+
+	.mixed-top-right{
+	left: 10%;
+	top:10%;
+	}
+
+	.mixed-mid-left{
+	left: 10%;
+	top:10%;
+	}
+
+	.mixed-mid-mid{
+	left: 10%;
+	top:10%;
+	}
+
+	.mixed-mid-right{
+	left: 10%;
+	top:10%;
+	}
+
+	.mixed-bottom-left{
+	left: 10%;
+	top:10%;
+	}
+
+	.mixed-bottom-mid{
+	left: 10%;
+	top:10%;
+	}
+
+	.mixed-bottom-right{
+	left: 10%;
+	top:10%;
+	}
+	
+	/* Instagram */
+	#instafeed a > img {
+		width: 5.375em;
+		height: 5.375em;
+	}
+	.instagram-container{
+		bottom: 5em; 
+		left: 2em;										
+	}
+	
+	.instagram-container-lg{
+			width: 27em; 
+		}
+		.instagram-container-medium{
+			width: 24em; 
+		}
+		.instagram-container-sm{
+			width: 20em; 
+		}
+  }
+  
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+   body{font-size: 14px;}
+   /* textbox */
+   	.textbox-lg{
+		width: 25em;	
+	}
+	.textbox-medium{
+		width: 22em;	
+	}
+	.textbox-sm{
+		width: 18em;		
+	}
+	.textbox-top-mid{
+		top: 10%; 
+		left: 20%;
+	}
+	.textbox-mid-mid{
+		top: 25%; 
+		left: 20%;
+	}
+	.textbox-bottom-mid{
+		bottom: 10%; 
+		left: 20%;
+	}
+	/* navigation */
+	#fp-nav.right {
+		right: 0.875em;
+	}
+	#fp-nav.left {
+		left: 0.875em;
+	}
+	.fp-slidesNav.bottom {
+		bottom: .875em;
+	}
+	.fp-slidesNav.top {
+		top: .875em;
+	}
+	.fp-slidesNav{
+		margin-left: -35em; 
+	}
+	#fp-nav ul li .fp-tooltip {
+    top: -0.125em;
+    color: rgba(131, 139, 131, 0.56);
+	text-shadow: 0 1px 0 black;
+    font-size: 1.25em;   
+    cursor: pointer;
+	}
+	/* hotspot */
+	.spot-top-left{
+	left: 55%;
+	bottom:60%;
+	}
+	.spot-mid-left{
+	left: 55%;
+	bottom:45%;
+	}
+	.spot-bottom-left{
+	left: 55%;
+	bottom:20%;
+	}
+}
+
+
+	/* List Items */	
+	ul.icon
+	{
+		list-style-type: none;
+	}
+
+	ul.icon li
+	{
+		text-indent: -1.4em;
+		margin: 0.5em 2em;
+	}
+
+	ul.icon li:before
+	{
+		font-family: FontAwesome;
+		content: "\f111";
+		float: left;
+		width: 1.4em;
+		color: #111111;
+	}
+	
+	ul.icon li.check:before { content: "\f00c"; }
+	
