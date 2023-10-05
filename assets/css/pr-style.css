@@ -34,8 +34,8 @@ a{
 }
 
 header {
-	background: linear-gradient(rgba(0, 0, 0, 0.8), transparent);
-	height: 25vh;
+	background: linear-gradient(rgba(13, 11, 94, 0.9), transparent);
+	height: 20vh;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -142,11 +142,11 @@ header {
 	left: 6%;
 }
 .textbox-top-mid{
-	top: 10%; 
+	top: 15%; 
 	left: 30%;
 }
 .textbox-top-right{
-	top: 10%; 
+	top: 15%; 
 	right: 6%;
 }
 
@@ -228,8 +228,12 @@ header {
     -webkit-transform: translate3d(0,0,0);
     -ms-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
+	opacity: .5;
+	transition: all .4s linear;
 }
-
+.section-controlArrow:hover {
+	opacity: 1;
+}
 
 
 /* Overwrites some classes from jquery.fullPage.css 
@@ -326,6 +330,15 @@ header {
 	display: inline-block;
 	padding-right: 0.187em;
 	vertical-align: middle;    
+}
+
+.fp-controlArrow {
+	opacity: .5;
+	transition: all .4s linear;
+}
+
+.fp-controlArrow:hover {
+	opacity: 1;
 }
 /* this is for vertical navigation
    here, we changed the top property */
@@ -882,7 +895,7 @@ object-fit: scale-down; /*scale down video background */
 
 .border-layout-container {
 	position: absolute; 
-	top: 10%; 
+	top: 15%; 
 	left: 5%; 
 	width: 90%; 
 	height: 60%;
