@@ -46,7 +46,7 @@ $(document).ready(function(){
 	$('#mytemplate').fullpage({
 				anchors: ['Slide1','Slide2','Slide3','Slide4'],
 				slidesNavigation: true,
-				scrollingSpeed:100,
+				scrollingSpeed:700,
 				resize : false,
 				navigation: true,
 				navigationPosition: 'right',
@@ -78,7 +78,7 @@ $(document).ready(function(){
 				onSlideLeave: function( anchorLink, index, slideIndex, direction){
 					var leavingSlide = $(this);
 					// make faster horizontal (slide) navigation
-					$.fn.fullpage.setScrollingSpeed(250);
+					$.fn.fullpage.setScrollingSpeed(700);
 					
 					// check for video in the leaving section
 					var videoElement = $(leavingSlide[0]).find('video');
@@ -115,7 +115,7 @@ $(document).ready(function(){
 					var leavingSection = $(this);
 					
 					// make faster vertical (section) navigation
-					$.fn.fullpage.setScrollingSpeed(250);
+					$.fn.fullpage.setScrollingSpeed(700);
 					
 
 					// check for video in the leaving section
