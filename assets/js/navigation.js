@@ -56,7 +56,6 @@ $(document).ready(function(){
 				responsive: 0,
 				afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
 					var loadedSlide = $(this);
-					
 					// the loaded slide has bright background
 					if($(loadedSlide[0]).hasClass('background-type-white') || $(loadedSlide[0]).hasClass('background-type-gray')) {				  
 						showBlackLogo();
@@ -67,8 +66,8 @@ $(document).ready(function(){
 					}
 					
 					// check for video in the loaded slide (mixed slide)
-					var videoElement = $(loadedSlide[0]).find('video');
-					
+					var videoElement = $(loadedSlide).find('video');
+
 					// If the videoElement length is > 0, the section has video element
 					if(videoElement.length > 0)
 					{
@@ -92,21 +91,18 @@ $(document).ready(function(){
 				// Callback fired once the sections have been loaded, after the scrolling has ended.
 				afterLoad: function(anchorLink, index){
 					var loadedSection = $(this);
-					
-						// check for video in the loaded section
+
+					// check for video in the loaded section
 					// if section has no slides, then the video starts from section 
 					// else, it will start from slide
-					if($(loadedSection).find('.fp-slides').length <= 0)
+
+					var videoElement = $(loadedSection).find('.active video');
+						
+					// If the videoElement length is > 0, the section has video element
+					if(videoElement.length > 0)
 					{
-						var videoElement = $(loadedSection).find('.fp-tableCell > video');
-					
-						// If the videoElement length is > 0, the section has video element
-						if(videoElement.length > 0)
-						{
-							videoElement.get(0).play();
-						}
-					}
-															
+						videoElement.get(0).play();
+					}							
 				},
 				// index: index of the leaving section. Starting from 1.
 				// nextIndex: index of the destination section. Starting from 1.
@@ -119,7 +115,7 @@ $(document).ready(function(){
 					
 
 					// check for video in the leaving section
-					var videoElement = $(leavingSection[0]).find('.fp-tableCell > video');
+					var videoElement = $(leavingSection[0]).find('video');
 					
 					// If the videoElement length is > 0, the section has video element
 					if(videoElement.length > 0)
