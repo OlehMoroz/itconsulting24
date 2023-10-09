@@ -260,7 +260,6 @@ header {
 	-ms-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 	opacity: .5;
-	transition: all .4s linear;
 }
 
 .section-controlArrow:hover {
@@ -290,9 +289,9 @@ header {
 	width: auto;
 	opacity: 1;
 	top: 0em;
-	text-shadow: 0 1px 0 black;
+	/*text-shadow: 0 1px 0 black;*/
 	font-size: 1.25em;
-	color: #333;
+	color: rgba(255, 255, 255, 0.4);
 }
 
 .language-active {
@@ -300,6 +299,12 @@ header {
 }
 
 /* section navigation, up control arrow */
+.section-controlArrow {
+	opacity: 1;
+	visibility: visible;
+	transition: all .1s linear;
+}
+
 .section-controlArrow.fp-up {
 	top: -1em;
 }
@@ -308,12 +313,16 @@ header {
 .section-controlArrow.fp-up:before {
 	font-family: FontAwesome;
 	font-size: 5em;
-	color: #898987;
+	color: rgba(255, 255, 255, 0.4);
 	/* content: "\f106"; */
 	content: "\f0d8";
 	display: inline-block;
 	padding-bottom: 0.187em;
 	vertical-align: middle;
+}
+
+.section-controlArrow.fp-up:hover:before {
+	color: #fff;
 }
 
 /* section navigation, bottom control arrow */
@@ -325,12 +334,16 @@ header {
 .section-controlArrow.fp-down:before {
 	font-family: FontAwesome;
 	font-size: 5em;
-	color: #898987;
+	color: rgba(255, 255, 255, 0.4);
 	/* content: "\f107"; */
 	content: "\f0d7";
 	display: inline-block;
 	padding-bottom: 0.187em;
 	vertical-align: middle;
+}
+
+.section-controlArrow.fp-down:hover:before {
+	color: #fff;
 }
 
 /*  for horizontal menu, left control array
@@ -343,12 +356,16 @@ header {
 .fp-controlArrow.fp-prev:before {
 	font-family: FontAwesome;
 	font-size: 4em;
-	color: #898987;
+	color: rgba(255, 255, 255, 0.4);
 	/* 	content: "\f104"; */
 	content: "\f0d9";
 	display: inline-block;
 	padding-left: 0.187em;
 	vertical-align: middle;
+}
+
+.fp-controlArrow.fp-prev:hover:before {
+	color: #fff;
 }
 
 /*  for horizontal menu, right control array
@@ -361,7 +378,7 @@ header {
 .fp-controlArrow.fp-next:before {
 	font-family: FontAwesome;
 	font-size: 4em;
-	color: #898987;
+	color: rgba(255, 255, 255, 0.4);
 	/* content: "\f105"; */
 	/* content: "\f138"; */
 	content: "\f0da";
@@ -370,13 +387,13 @@ header {
 	vertical-align: middle;
 }
 
-.fp-controlArrow {
-	opacity: .5;
-	transition: all .4s linear;
+.fp-controlArrow.fp-next:hover:before {
+	color: #fff;
 }
 
-.fp-controlArrow:hover {
-	opacity: 1;
+.fp-controlArrow,
+.section-controlArrow  {
+	transition: all .3s linear;
 }
 
 /* this is for vertical navigation
@@ -408,16 +425,32 @@ header {
 
 /* for active navigation item and if we enter mouse in the navigation item 
    here, we changed all the properties, height, width, margin, border-radious and background*/
+#fp-nav ul li {
+	width: 26px;
+	height: 26px;
+}
+
+#fp-nav.fp-show-active a.active + .fp-tooltip,
+#fp-nav.fp-show-active a + .fp-tooltip {
+	top: 1em;
+}
+
 #fp-nav ul li a.active span,
 .fp-slidesNav ul li a.active span,
 #fp-nav ul li:hover a.active span,
 .fp-slidesNav ul li:hover a.active span {
-	height: 0.75em;
-	width: 0.75em;
+	height: .75em;
+	width: .75em;
 	margin: -0.125em 0em 0em -0.125em;
 	border-radius: 0%;
-	background: #838b83;
+	background: #fff;
 	text-shadow: 0 1px 0 black;
+}
+
+
+#fp-nav ul li a.active span {
+	height: 16px;
+	width: 16px;
 }
 
 /* when we hover on the horizontal and vertical menu list-item
@@ -429,13 +462,19 @@ header {
 	margin: -0.125em 0em 0em -0.125em;
 }
 
+#fp-nav ul li:hover a span,
+#fp-nav ul li:hover a.active span {
+	height: 16px;
+	width: 16px;
+}
+
 /* this is used to show the labels of vertical navigation item
    here, we changed the font color and font family  */
 #fp-nav ul li .fp-tooltip {
 	position: absolute;
 	top: 0em;
-	color: rgba(131, 139, 131, 0.95);
-	text-shadow: 0 1px 0 black;
+	color: #fff;
+	text-shadow: 0 1px 0 rgb(35, 44, 85);
 	font-size: 0.875em;
 	font-family: helvetica;
 	white-space: nowrap;
@@ -454,10 +493,9 @@ header {
 	border-radius: 0%;
 	position: absolute;
 	z-index: 1;
-	height: 0.75em;
-	width: 0.75em;
+	height: .75em;
+	width: .75em;
 	border: 0;
-	rgba(131, 139, 131, 0.56);
 	left: 50%;
 	top: 50%;
 	margin: -0.125em 0em 0em -0.125em;
@@ -465,13 +503,19 @@ header {
 	-moz-transition: all 0.1s ease-in-out;
 	-o-transition: all 0.1s ease-in-out;
 	transition: all 0.1s ease-in-out;
+	background: rgba(255, 255, 255, 0.4);
+}
+
+#fp-nav ul li a span {
+	height: 16px;
+	width: 16px;
 }
 
 /* this is used to show the navigation item labels
  onmouseover on the vertical menu */
 #fp-nav ul:hover .fp-tooltip {
 	width: auto;
-	opacity: 1;
+	opacity: .7;
 }
 
 #fp-nav ul {
@@ -1138,6 +1182,12 @@ video {
 	font-size: 1.5em;
 }
 
+.fp-slidesNav {
+	opacity: 0;
+	visibility: hidden;
+	transition: all .1s linear;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px) {
 	body {
 		font-size: 10px;
@@ -1224,9 +1274,8 @@ video {
 
 	#fp-nav ul li .fp-tooltip {
 		top: -0.125em;
-		color: #838b83;
-		text-shadow: 0 1px 0 black;
 		font-size: 1.25em;
+		display: none;
 	}
 
 	/* hotspot */
@@ -1357,7 +1406,7 @@ video {
 	}
 
 	#fp-nav {
-		top: 10em;
+		top: 12em;
 	}
 
 	.border-layout-left-content,
@@ -1422,8 +1471,6 @@ video {
 
 	#fp-nav ul li .fp-tooltip {
 		top: -0.125em;
-		color: rgba(131, 139, 131, 0.56);
-		text-shadow: 0 1px 0 black;
 		font-size: 1.25em;
 		cursor: pointer;
 	}
@@ -1490,4 +1537,24 @@ ul.icon li:before {
 
 ul.icon li.check:before {
 	content: "\f00c";
+}
+
+#fp-nav ul li a[href="#Slide1"] span {
+	padding: 5px;
+	content: url('../imgs/icon/business-bag-line-drawing.svg');
+}
+
+#fp-nav ul li a[href="#Slide2"] span {
+	padding: 5px;
+	content: url('../imgs/icon/person-line-drawing.svg');
+}
+
+#fp-nav ul li a[href="#Slide3"] span {
+	padding: 5px;
+	content: url('../imgs/icon/book.svg');
+}
+
+#fp-nav ul li a[href="#Slide4"] span {
+	padding: 5px;
+	content: url('../imgs/icon/contact-us.svg');
 }
