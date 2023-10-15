@@ -401,7 +401,7 @@ header {
 #fp-nav {
 	position: fixed;
 	z-index: 100;
-	top: 7em;
+	top: 8em;
 	opacity: 1;
 	-webkit-transform: translate3d(0, 0, 0);
 	z-index: 9999999;
@@ -431,7 +431,8 @@ header {
 }
 
 #fp-nav.fp-show-active a.active + .fp-tooltip,
-#fp-nav.fp-show-active a + .fp-tooltip {
+#fp-nav.fp-show-active a + .fp-tooltip,
+#fp-nav ul li:hover .fp-tooltip {
 	top: 1em;
 }
 
@@ -1186,6 +1187,16 @@ video {
 	opacity: 0;
 	visibility: hidden;
 	transition: all .1s linear;
+}
+
+.video-wrap {
+	background: #000;
+}
+
+.video-wrap video {
+	max-width: 100%;
+	max-height: 85%;
+	margin: auto;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {

@@ -70,7 +70,12 @@ $(document).ready(function () {
 
 			// If the videoElement length is > 0, the section has video element
 			if (videoElement.length > 0) {
-				videoElement.get(0).play();
+				setTimeout(()=> {
+					videoElement.get(0).play();
+					videoElement.prop('muted', false);
+					videoElement.attr('muted', false);
+					videoElement.volume = 1;
+				}, 100)
 			}
 		},
 		onSlideLeave: function (anchorLink, index, slideIndex, direction) {
