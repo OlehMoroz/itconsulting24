@@ -426,14 +426,14 @@ header {
 /* for active navigation item and if we enter mouse in the navigation item 
    here, we changed all the properties, height, width, margin, border-radious and background*/
 #fp-nav ul li {
-	width: 26px;
-	height: 26px;
+	width: 16px;
+	height: 16px;
 }
 
 #fp-nav.fp-show-active a.active + .fp-tooltip,
 #fp-nav.fp-show-active a + .fp-tooltip,
 #fp-nav ul li:hover .fp-tooltip {
-	top: 1em;
+	top: .2em;
 }
 
 #fp-nav ul li a.active span,
@@ -450,8 +450,8 @@ header {
 
 
 #fp-nav ul li a.active span {
-	height: 16px;
-	width: 16px;
+	height: 12px;
+	width: 12px;
 }
 
 /* when we hover on the horizontal and vertical menu list-item
@@ -465,8 +465,8 @@ header {
 
 #fp-nav ul li:hover a span,
 #fp-nav ul li:hover a.active span {
-	height: 16px;
-	width: 16px;
+	height: 12px;
+	width: 12px;
 }
 
 /* this is used to show the labels of vertical navigation item
@@ -508,8 +508,8 @@ header {
 }
 
 #fp-nav ul li a span {
-	height: 16px;
-	width: 16px;
+	height: 12px;
+	width: 12px;
 }
 
 /* this is used to show the navigation item labels
@@ -976,6 +976,43 @@ video {
 	/*scale down video background */
 }
 
+.video-wrap__container {
+	min-width: 45%;
+	aspect-ratio: 16 / 8.55;
+}
+
+.video-play_button {
+	border: none;
+	background: transparent;
+	border-radius: 50%;
+	position: absolute;
+	z-index: 9999;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1);
+	cursor: pointer;
+	animation: play_button 3s ease-in-out infinite;
+}
+
+.video-play_button:hover {
+	opacity: 1;
+}
+
+@keyframes play_button {
+	0% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: translate(-50%, -50%) scale(.7);
+		opacity: .7;
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+}
+
 /* Button style */
 .btn {
 	display: inline-block;
@@ -1195,7 +1232,7 @@ video {
 
 .video-wrap video {
 	max-width: 100%;
-	max-height: 85%;
+	max-height: 100%;
 	margin: auto;
 }
 
@@ -1224,7 +1261,7 @@ video {
 
 	.textbox-top-mid {
 		top: 20%;
-		left: 20%;
+		left: 15%;
 	}
 
 	.textbox-mid-mid {
@@ -1424,6 +1461,10 @@ video {
 	.border-layout-right-content {
 		width: 0%;
 	}
+
+	.border-layout-container {
+		width: 85%;
+	}
 }
 
 @media screen and (min-width: 768px) and (max-width: 1200px) {
@@ -1550,7 +1591,7 @@ ul.icon li.check:before {
 	content: "\f00c";
 }
 
-#fp-nav ul li a[href="#Slide1"] span {
+/*#fp-nav ul li a[href="#Slide1"] span {
 	padding: 5px;
 	content: url('../imgs/icon/business-bag-line-drawing.svg');
 }
@@ -1568,4 +1609,4 @@ ul.icon li.check:before {
 #fp-nav ul li a[href="#Slide4"] span {
 	padding: 5px;
 	content: url('../imgs/icon/contact-us.svg');
-}
+}*/

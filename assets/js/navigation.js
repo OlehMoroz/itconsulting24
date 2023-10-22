@@ -54,6 +54,9 @@ $(document).ready(function () {
 		showActiveTooltip: true,
 		continuousVertical: false, // for continuous vertical navigation 
 		responsive: 0,
+		loopBottom: false,
+		loopTop: false,
+		loopHorizontal: false,
 		afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
 			var loadedSlide = $(this);
 			// the loaded slide has bright background
@@ -67,15 +70,15 @@ $(document).ready(function () {
 
 			// check for video in the loaded slide (mixed slide)
 			var videoElement = $(loadedSlide).find('video');
+			var videoPlayButton = $('.video-play_button');
 
 			// If the videoElement length is > 0, the section has video element
 			if (videoElement.length > 0) {
-				setTimeout(()=> {
+				/*videoElement.get(0).play();*/
+				videoPlayButton.click(() => {
+					videoPlayButton.css('display', 'none');
 					videoElement.get(0).play();
-					videoElement.prop('muted', false);
-					videoElement.attr('muted', false);
-					videoElement.volume = 1;
-				}, 100)
+				});
 			}
 		},
 		onSlideLeave: function (anchorLink, index, slideIndex, direction) {
@@ -85,10 +88,11 @@ $(document).ready(function () {
 
 			// check for video in the leaving section
 			var videoElement = $(leavingSlide[0]).find('video');
-
+			var videoPlayButton = $('.video-play_button');
 			// If the videoElement length is > 0, the slide has video element
 			if (videoElement.length > 0) {
 				videoElement.get(0).pause();
+				videoPlayButton.css('display', 'block');
 			}
 		},
 		// Callback fired once the sections have been loaded, after the scrolling has ended.
@@ -132,10 +136,15 @@ $(document).ready(function () {
 			// else, it will start from slide
 
 			var videoElement = $(loadedSection).find('.active video');
+			var videoPlayButton = $('.video-play_button');
 
 			// If the videoElement length is > 0, the section has video element
 			if (videoElement.length > 0) {
-				videoElement.get(0).play();
+				/*videoElement.get(0).play();*/
+				videoPlayButton.click(() => {
+					videoPlayButton.css('display', 'none');
+					videoElement.get(0).play();
+				});
 			}
 		},
 		// index: index of the leaving section. Starting from 1.
@@ -150,10 +159,12 @@ $(document).ready(function () {
 
 			// check for video in the leaving section
 			var videoElement = $(leavingSection[0]).find('video');
+			var videoPlayButton = $('.video-play_button');
 
-			// If the videoElement length is > 0, the section has video element
+			// If the videoElement length is > 0, the slide has video element
 			if (videoElement.length > 0) {
 				videoElement.get(0).pause();
+				videoPlayButton.css('display', 'block');
 			}
 		}
 	});
@@ -172,3 +183,40 @@ function showWhiteLogo() {
 	var logoDivWhite = document.getElementById('divLogoWhite');
 	logoDivWhite.style['display'] = 'inline';
 }
+
+//Change background image when breakpoint is changed
+
+let currentBreakpoint = '';
+
+function changeBackground() {
+	const newWidth = window.innerWidth;
+	let newBreakpoint = '';
+
+	if (newWidth <= 1023 && newWidth >= 768) {
+		newBreakpoint = '-768';
+	} else if (newWidth <= 767) {
+		newBreakpoint = '-360';
+	} else {
+		newBreakpoint = '';
+	}
+
+	if (newBreakpoint !== currentBreakpoint) {
+		const slides = document.querySelectorAll('.slide');
+
+		slides.forEach(slide => {
+			const style = slide.style.backgroundImage;
+			const imageUrl = style.match(/url\(["']?([^"']*)["']?\)/)[1];
+			const regex = /\.(jpg|png)$/;
+			let imageUrlWithoutExtension = imageUrl.replace(regex, '');
+			const imageExtension = imageUrl.match(regex)[1];
+
+			imageUrlWithoutExtension = imageUrlWithoutExtension.replace(`${currentBreakpoint}`, '');
+			slide.style.backgroundImage = `url(${imageUrlWithoutExtension}${newBreakpoint}.${imageExtension})`;
+		});
+
+		currentBreakpoint = newBreakpoint;
+	}
+}
+
+changeBackground();
+window.addEventListener('resize', changeBackground);
