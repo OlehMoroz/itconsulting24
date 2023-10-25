@@ -46,7 +46,7 @@ $(document).ready(function () {
 	$('#mytemplate').fullpage({
 		anchors: ['Slide1', 'Slide2', 'Slide3', 'Slide4'],
 		slidesNavigation: true,
-		scrollingSpeed: 700,
+		scrollingSpeed: 350,
 		resize: false,
 		navigation: true,
 		navigationPosition: 'right',
@@ -74,7 +74,7 @@ $(document).ready(function () {
 
 			// If the videoElement length is > 0, the section has video element
 			if (videoElement.length > 0) {
-				/*videoElement.get(0).play();*/
+				videoElement.get(0).play();
 				videoPlayButton.click(() => {
 					videoPlayButton.css('display', 'none');
 					videoElement.get(0).play();
@@ -84,7 +84,7 @@ $(document).ready(function () {
 		onSlideLeave: function (anchorLink, index, slideIndex, direction) {
 			var leavingSlide = $(this);
 			// make faster horizontal (slide) navigation
-			$.fn.fullpage.setScrollingSpeed(700);
+			$.fn.fullpage.setScrollingSpeed(350);
 
 			// check for video in the leaving section
 			var videoElement = $(leavingSlide[0]).find('video');
@@ -140,7 +140,7 @@ $(document).ready(function () {
 
 			// If the videoElement length is > 0, the section has video element
 			if (videoElement.length > 0) {
-				/*videoElement.get(0).play();*/
+				videoElement.get(0).play();
 				videoPlayButton.click(() => {
 					videoPlayButton.css('display', 'none');
 					videoElement.get(0).play();
