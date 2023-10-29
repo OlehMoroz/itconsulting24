@@ -461,7 +461,7 @@ header {
 	width: 12px;
 	height: 12px;
 	margin: -0.125em 0em 0em -0.125em;
-	border: 2px solid #137cfd;
+	/*border: 2px solid rgba(1, 1, 26, 0.6);*/
 }
 
 #fp-nav ul li:hover a span,
@@ -506,7 +506,7 @@ header {
 	-o-transition: all 0.1s ease-in-out;
 	transition: all 0.1s ease-in-out;
 	background: rgba(255, 255, 255, 0.4);
-	border: 2px solid #137cfd;
+	/*border: 2px solid rgba(1, 1, 26, 0.6);*/
 }
 
 #fp-nav ul li a span {
@@ -791,7 +791,6 @@ header {
 	bottom: 0%;
 	top: 0%;
 	left: 0%;
-	z-index: 111;
 }
 
 /* left */
@@ -950,7 +949,6 @@ video {
 	bottom: 0%;
 	top: 0%;
 	left: 0%;
-	z-index: 111;
 }
 
 .video-objectfit-cover {
@@ -980,7 +978,13 @@ video {
 
 .video-wrap__container {
 	min-width: 45%;
-	aspect-ratio: 16 / 8.55;
+	aspect-ratio: 16 / 9;
+}
+
+.video-wrap__container .custom-video {
+	width: 100%;
+	height: 100%;
+	background: transparent;
 }
 
 .video-play_button {

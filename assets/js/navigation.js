@@ -154,7 +154,7 @@ $(document).ready(function () {
 			var leavingSection = $(this);
 
 			// make faster vertical (section) navigation
-			$.fn.fullpage.setScrollingSpeed(700);
+			$.fn.fullpage.setScrollingSpeed(350);
 
 
 			// check for video in the leaving section
