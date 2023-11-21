@@ -46,7 +46,7 @@ $(document).ready(function () {
 	$('#mytemplate').fullpage({
 		anchors: ['Slide1', 'Slide2', 'Slide3', 'Slide4'],
 		slidesNavigation: true,
-		scrollingSpeed: 350,
+		scrollingSpeed: 300,
 		resize: false,
 		navigation: true,
 		navigationPosition: 'right',
@@ -57,7 +57,9 @@ $(document).ready(function () {
 		loopBottom: false,
 		loopTop: false,
 		loopHorizontal: false,
-		afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
+		slideMoving: false,
+		credits: { enabled: false},
+		afterSlideLoad: function (section, origin, destination, direction, trigger) {
 			var loadedSlide = $(this);
 			// the loaded slide has bright background
 			if ($(loadedSlide[0]).hasClass('background-type-white') || $(loadedSlide[0]).hasClass('background-type-gray')) {
@@ -69,37 +71,64 @@ $(document).ready(function () {
 			}
 
 			// check for video in the loaded slide (mixed slide)
-			var videoElement = $(loadedSlide).find('video');
+			var activeSlide = destination.item;
+			var videoElement = $(activeSlide).find('video');
 			var videoPlayButton = $('.video-play_button');
-
+			var placeholderImage = $(activeSlide).find('.video-bg');
 			// If the videoElement length is > 0, the section has video element
 			if (videoElement.length > 0) {
+				var placeholderImage = $(activeSlide).find('.video-bg');
 				videoElement.get(0).play();
+				setTimeout(() => {
+					placeholderImage.css({
+						'opacity': 0,
+						'visibility': 'hidden'
+					})
+				}, 100);
+
+				setTimeout(() => {
+					placeholderImage.css({
+						'display': 'none',
+					})
+				}, 3000);
 				videoPlayButton.click(() => {
 					videoPlayButton.css('display', 'none');
 					videoElement.get(0).play();
 				});
 			}
+
+			$('.swipe-sensitive').on('touchstart', function(event) {
+				event.stopPropagation();
+			});
 		},
-		onSlideLeave: function (anchorLink, index, slideIndex, direction) {
+		onSlideLeave: function (section, origin, destination, direction, trigger) {
 			var leavingSlide = $(this);
 			// make faster horizontal (slide) navigation
-			$.fn.fullpage.setScrollingSpeed(350);
+			$.fn.fullpage.setScrollingSpeed(300);
 
 			// check for video in the leaving section
-			var videoElement = $(leavingSlide[0]).find('video');
+			var videoElement = $(destination.item).find('video');
 			var videoPlayButton = $('.video-play_button');
+
 			// If the videoElement length is > 0, the slide has video element
 			if (videoElement.length > 0) {
+				var placeholderImage = $(destination.item).find('.video-bg');
 				videoElement.get(0).pause();
+				setTimeout(() => {
+					placeholderImage.css({
+						'display': 'block',
+						'opacity': 1,
+						'visibility': 'visible'
+					})
+				}, 100);
 				videoPlayButton.css('display', 'block');
 			}
 		},
 		// Callback fired once the sections have been loaded, after the scrolling has ended.
-		afterLoad: function (anchorLink, index) {
+		afterLoad: function (origin, destination, direction, trigger) {
 			var loadedSection = $(this);
 			// Hide navigation arrow if first or last horisontal slide
-			if (index == 1) {
+			if (destination.index == 0) {
 				$('.fp-up').css({
 					'opacity' : '0',
 					'visibility' : 'hidden'
@@ -111,7 +140,7 @@ $(document).ready(function () {
 				});
 			}
 
-			if (index == $('#mytemplate .section').length) {
+			if (destination.index == $('#mytemplate .section').length - 1) {
 				$('.fp-down').css({
 					'opacity' : '0',
 					'visibility' : 'hidden'
@@ -123,24 +152,44 @@ $(document).ready(function () {
 				});
 			}
 
+			
 			// Hide slide navigation if slide less than two
-			if ($(loadedSection).find('.fp-slidesNav ul li').length >= 2) {
+			/*if ($(loadedSection).find('.slide').length >= 2) {
 				$(loadedSection).find('.fp-slidesNav').css({
 					'opacity' : '1',
 					'visibility' : 'visible'
 				});
 			}
 
+			console.log($(loadedSection).find('.slide').length);*/
+
 			// check for video in the loaded section
 			// if section has no slides, then the video starts from section 
 			// else, it will start from slide
 
-			var videoElement = $(loadedSection).find('.active video');
+			var activeSlide = destination.item;
+			var videoElement = $(activeSlide).find('.active video');
 			var videoPlayButton = $('.video-play_button');
 
 			// If the videoElement length is > 0, the section has video element
 			if (videoElement.length > 0) {
+				var placeholderImage = $(activeSlide).find('.video-bg');
+
 				videoElement.get(0).play();
+
+				setTimeout(() => {
+					placeholderImage.css({
+						'opacity': 0,
+						'visibility': 'hidden'
+					})
+				}, 100);
+
+				setTimeout(() => {
+					placeholderImage.css({
+						'display': 'none',
+					})
+				}, 300);
+
 				videoPlayButton.click(() => {
 					videoPlayButton.css('display', 'none');
 					videoElement.get(0).play();
@@ -150,20 +199,31 @@ $(document).ready(function () {
 		// index: index of the leaving section. Starting from 1.
 		// nextIndex: index of the destination section. Starting from 1.
 		// direction: it will take the values up or down depending on the scrolling direction.
-		onLeave: function (index, nextIndex, direction) {
+		onLeave: function (origin, destination, direction, trigger) {
 			var leavingSection = $(this);
 
 			// make faster vertical (section) navigation
-			$.fn.fullpage.setScrollingSpeed(350);
+			$.fn.fullpage.setScrollingSpeed(300);
 
 
 			// check for video in the leaving section
-			var videoElement = $(leavingSection[0]).find('video');
+			var activeSlide = leavingSection[0].item;
+			var videoElement = $(activeSlide).find('.active video');
 			var videoPlayButton = $('.video-play_button');
 
 			// If the videoElement length is > 0, the slide has video element
 			if (videoElement.length > 0) {
+				var placeholderImage = $(activeSlide).find('.video-bg');
 				videoElement.get(0).pause();
+
+				setTimeout(() => {
+					placeholderImage.css({
+						'display': 'block',
+						'opacity': 1,
+						'visibility': 'visible'
+					})
+				}, 100);
+
 				videoPlayButton.css('display', 'block');
 			}
 		}

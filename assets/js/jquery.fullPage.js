@@ -334,6 +334,7 @@
         * Slides right the slider of the active section.
         */
         FP.moveSlideRight = function(){
+            console.log('move slide right');
             moveSlide('next');
         };
 
@@ -1035,12 +1036,12 @@
         function moveSlide(direction){
             var activeSection = $(SECTION_ACTIVE_SEL);
             var slides = activeSection.find(SLIDES_WRAPPER_SEL);
-
+            console.log('moveSlide() ... Start');  
             // more than one slide needed and nothing should be sliding
-            if (!slides.length || slideMoving) {
+            if (!slides.length /*|| slideMoving*/) {
                 return;
             }
-
+            console.log('moveSlide() ... Processing');  
             var currentSlide = slides.find(SLIDE_ACTIVE_SEL);
             var destiny = null;
 
